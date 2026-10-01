@@ -1,0 +1,111 @@
+/* 1. Tema claro: as cores ficam em variáveis (padrão da página) */
+:root {
+  --fundo: #f4f4f1;
+  --cartao: #ffffff;
+  --texto: #111318;
+  --acento: #e63946;
+  --acento-texto: #ffffff;
+  --vidro: #cfe8f5;
+
+  /* cor de cada carro no tema claro */
+  --c1: #d62828;
+  --c2: #1d4ed8;
+  --c3: #f59e0b;
+}
+
+/* 2. Tema escuro: só redefinimos as variáveis. O resto do CSS não muda! */
+[data-theme="dark"] {
+  --fundo: #0d0f14;
+  --cartao: #181b24;
+  --texto: #eef1f7;
+  --acento: #22d3ee;
+  --acento-texto: #0d0f14;
+  --vidro: #1e3a4c;
+
+  /* cor de cada carro no tema escuro */
+  --c1: #8b5cf6;
+  --c2: #22d3ee;
+  --c3: #a3e635;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: var(--fundo);
+  color: var(--texto);
+  line-height: 1.6;
+  /* transition faz a troca de tema acontecer suavemente */
+  transition: background 0.4s ease, color 0.4s ease;
+}
+
+.topo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 5%;
+  border-bottom: 1px solid color-mix(in srgb, var(--texto) 15%, transparent);
+}
+.logo { color: var(--acento); font-weight: 800; font-size: 1.4rem; text-decoration: none; }
+
+.botao-tema {
+  padding: 0.5rem 1.1rem;
+  background: transparent;
+  color: var(--texto);
+  border: 2px solid var(--texto);
+  border-radius: 999px;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+.botao-tema:hover { background: var(--texto); color: var(--fundo); }
+
+.hero { padding: 6rem 5% 4rem; }
+.hero h1 { font-size: clamp(2rem, 6vw, 4rem); line-height: 1.1; max-width: 16ch; }
+.hero p { max-width: 50ch; margin: 1.5rem 0 2rem; font-size: 1.15rem; }
+
+.botao {
+  display: inline-block;
+  padding: 0.8rem 1.6rem;
+  background: var(--acento);
+  color: var(--acento-texto);
+  font-weight: 700;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: transform 0.2s ease;
+}
+.botao:hover { transform: translateY(-2px); }
+.botao:focus-visible, .botao-tema:focus-visible { outline: 3px solid var(--texto); outline-offset: 3px; }
+
+.secao { padding: 4rem 5%; }
+.secao h2 { font-size: 2rem; margin-bottom: 2rem; }
+.secao-destaque { text-align: center; }
+.secao-destaque p { margin-bottom: 1.5rem; }
+
+.grade { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+
+/* 3. Cada cartão escolhe qual variável de cor o carro vai usar */
+.cartao {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding: 1.5rem;
+  background: var(--cartao);
+  border-radius: 12px;
+  transition: background 0.4s ease;
+}
+.carro-1 { --car: var(--c1); }
+.carro-2 { --car: var(--c2); }
+.carro-3 { --car: var(--c3); }
+
+.cartao .botao { margin-top: 0.8rem; text-align: center; }
+.cartao strong { font-size: 1.4rem; }
+.desenho { width: 100%; margin-bottom: 0.5rem; }
+
+/* O desenho do SVG usa fill com var(--car): trocou o tema, trocou a cor do carro */
+
+.rodape { padding: 2rem 5%; text-align: center; border-top: 1px solid color-mix(in srgb, var(--texto) 15%, transparent); }
+
+@media (max-width: 700px) {
+  .grade { grid-template-columns: 1fr; }
+}

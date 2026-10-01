@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<!-- data-theme é o "interruptor": o JavaScript troca entre "light" e "dark" e o CSS reage -->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Auto Veloz | Venda de carros</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+
+  <!-- 1. Desenho do carro feito em SVG (código, não imagem). Definimos uma vez e reutilizamos com <use>.
+          A cor da lataria vem da variável --car, por isso ela muda junto com o tema -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="carro" viewBox="0 0 240 100">
+      <path style="fill:var(--car)" d="M10 70 L10 55 Q10 48 20 46 L60 40 L85 18 Q90 14 98 14 L155 14 Q163 14 168 19 L190 42 L222 48 Q232 50 232 60 L232 70 Z"/>
+      <path style="fill:var(--vidro)" d="M94 21 L150 21 L168 40 L78 40 Z"/>
+      <rect style="fill:var(--car)" x="120" y="21" width="3" height="19"/>
+      <circle cx="60" cy="74" r="18" fill="#14161c"/><circle cx="60" cy="74" r="8" fill="#cfd3da"/>
+      <circle cx="184" cy="74" r="18" fill="#14161c"/><circle cx="184" cy="74" r="8" fill="#cfd3da"/>
+    </symbol>
+  </svg>
+
+  <header class="topo">
+    <a href="#inicio" class="logo">Auto Veloz</a>
+    <!-- 2. O botão do modo escuro -->
+    <button id="botao-tema" class="botao-tema" type="button" aria-pressed="false">Modo escuro</button>
+  </header>
+
+  <main>
+    <section id="inicio" class="hero">
+      <h1>O carro certo, na cor certa para você.</h1>
+      <p>Seminovos revisados, financiamento facilitado e entrega rápida. Troque o tema da página e veja os carros mudarem de cor.</p>
+      <a href="#carros" class="botao">Ver carros</a>
+    </section>
+
+    <!-- 3. Catálogo: três cartões com a mesma estrutura -->
+    <section id="carros" class="secao">
+      <h2>Nossos destaques</h2>
+      <div class="grade">
+        <article class="cartao carro-1">
+          <svg class="desenho" viewBox="0 0 240 100" role="img" aria-label="Carro esportivo"><use href="#carro"/></svg>
+          <h3>Veloz GT</h3>
+          <p>Esportivo, 2022, 28 mil km</p>
+          <strong>R$ 89.900</strong>
+          <a href="#contato" class="botao">Quero esse</a>
+        </article>
+        <article class="cartao carro-2">
+          <svg class="desenho" viewBox="0 0 240 100" role="img" aria-label="Carro compacto"><use href="#carro"/></svg>
+          <h3>Urbano E</h3>
+          <p>Compacto, 2023, 15 mil km</p>
+          <strong>R$ 64.500</strong>
+          <a href="#contato" class="botao">Quero esse</a>
+        </article>
+        <article class="cartao carro-3">
+          <svg class="desenho" viewBox="0 0 240 100" role="img" aria-label="Carro aventureiro"><use href="#carro"/></svg>
+          <h3>Trilha 4x4</h3>
+          <p>Aventura, 2021, 41 mil km</p>
+          <strong>R$ 112.000</strong>
+          <a href="#contato" class="botao">Quero esse</a>
+        </article>
+      </div>
+    </section>
+
+    <section id="contato" class="secao secao-destaque">
+      <h2>Vamos conversar?</h2>
+      <p>Agende um test drive sem compromisso.</p>
+      <a href="https://wa.me/5585999999999" class="botao">Falar no WhatsApp</a>
+    </section>
+  </main>
+
+  <footer class="rodape"><p>Auto Veloz · Seg a Sáb, 8h às 18h</p></footer>
+
+</body>
+</html>
